@@ -29,7 +29,7 @@ button,
   background: none;
   border: none;
 }
-button:hover, .modal-close:hover {
+button:hover, .modal-close:hover, .hvr:hover {
   color: brown;
 }
 .modal-content,

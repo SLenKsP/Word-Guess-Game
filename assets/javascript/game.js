@@ -7,21 +7,98 @@ setInterval(function() {
   )[0].style.color = `#${colors[randomColor]}`;
 }, 1000);
 
-// variable 
+// object
+var avengers = {
+  heroNames: [
+    "DOCTORSTRANGE",
+    "IRONMAN",
+    "ANTMAN",
+    "BLACKWIDOW",
+    "BLACKPANTHER",
+    "CAPTAINMARVEL"
+  ],
+  heroImages: [
+    "assets/images/dr_strange.png",
+    "assets/images/iron_man.png",
+    "assets/images/ant_man.png",
+    "assets/images/black_widow.png",
+    "assets/images/black_panther.png",
+    "assets/images/captain_marvel.png"
+  ],
+  hints: [
+    "He Lives in Greenwich Village, New York City",
+    "He graduated from MIT with multiple degrees when he was 21 years old",
+    "He does not lose any of his strength when he shrinks",
+    "She was trained by Winter Soldier",
+    "His Superpowers Come from a Heart-shaped Herb",
+    "The strongest avenger"
+  ],
+  hulkImageOnLoss: "assets/images/hulk_image.png",
+  LossingThemes: "assets/audio/smash.mp3",
+  winningTheme: "assets/audio/win_theme.mp3"
+};
+
+// variable
 var wins = 0;
 var loss = 0;
 var guesses = 15;
-
-
+var randomNumber = Math.floor(Math.random() * avengers.heroNames.length);
+var hero = avengers.heroNames[randomNumber];
+var hint = avengers.hints[randomNumber];
+var imageOnWin = avengers.heroImages[randomNumber];
+var imageOnLoss = avengers.hulkImageOnLoss;
+var audioSourceOnLoss = avengers.LossingThemes;
+var audioSourceOnWin = avengers.winningTheme;
+var tempHero = hero;
+var user;
 // html elements
+var remainingGuesses = document.getElementById("guesses_left");
+var guessHistory = document.getElementById("guess_history");
+var heroSelected = document.getElementById("hero_guess");
+var userChar = document.getElementById("key_pressed");
+var totalWin = document.getElementById("total_win");
+var totalLoss = document.getElementById("total_loss");
+var hintLine = document.getElementById("hint");
+hintLine.innerHTML = hint; //gives hint for the avenger
+var showImage = document.getElementById("show_hero");
+var playAudio = document.getElementById("play_music");
 
-// object
+// setting up element values
+remainingGuesses.innerHTML = guesses;
+// function to set char
+String.prototype.setCharAt = function(index, chr) {
+  return this.substr(0, index) + chr + this.substr(index + 1);
+};
+//
+console.log(hero);
+console.log(hero.length);
+for (var j = 0; j < hero.length; j++) {
+  hero = hero.setCharAt(j, "_");
+  heroSelected.innerHTML = hero;
+}
+document.onkeyup = function(event) {
+  userChar.textContent = event.key;
+  user = userChar.textContent.toUpperCase();
 
-var avengers = {
-    heroNames:[ "DOCTORSTRANGE", "IRONMAN", "ANTMAN", "BLACKWIDOW", "BLACKPANTHER", "CAPTAINMARVEL" ],
-    heroImages: ["../images/dr_strange.png", "../images/iron_man.png", "../images/ant_man.png", "../images/black_widow.png", "../images/black_panther.png", "../images/captain_marvel.png"],
-    hints: [ "He Lives in New York City’s Greenwich Village", "He graduated from MIT with multiple degrees when he was 21 years old", "He doesn't lose any of his strength when he shrinks", "She was trained by Winter Soldier", "His Superpowers Come from a Heart-shaped Herb", "The strongest avenger" ],
-    hulkImageOnLoss: "../images/hulk_image.png",
-    LossingThemes: "../audio/smash.mp3",
-    winningTheme: "../audio/win_theme.mp3"
+  for (var k = 0; k < hero.length; k++) {
+    console.log(tempHero[k]);
+    if (user === tempHero[k]) {
+      hero = hero.setCharAt(k, tempHero[k]);
+      heroSelected.innerHTML = hero;
+      if (!hero.includes("_")) {
+        showImage.setAttribute("src", imageOnWin);
+        playAudio.setAttribute("src", audioSourceOnWin);
+        playAudio.play();
+      } else {
+        --guesses;
+        remainingGuesses.innerHTML = guesses;
+        guessHistory.innerHTML += user + ", ";
+      }
+    }
+    if (guesses === 0) {
+      showImage.setAttribute("src", imageOnLoss);
+      playAudio.setAttribute("src", audioSourceOnLoss);
+      playAudio.play();
+    }
+  }
 };

@@ -21,15 +21,13 @@
     <!-- css link -->
     <link rel="stylesheet" href="./assets/css/stylesheet.css" />
   </head>
-  <body style="background-image: url('./assets/images/bg.png')">
+  <body style="background-image: url('./assets/images/bg.png');">
     <div class="container-fluid mt-3">
       <!-- Header -->
       <div class="row my-4">
         <div class="col-sm-4 ">
           <button id="avenger_title" class=" text-center" onclick="reset()">
-            <span class="colored" style="transition: color 5s; font-size:5em"
-              >Hangman</span
-            >
+            <span style="font-size: 5em; color:#B87328">Hangman</span>
           </button>
         </div>
         <!-- rules button -->
@@ -47,61 +45,74 @@
 
       <!-- guess a hero and rules titles -->
       <div class="row">
-        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+          <!-- Hint Button -->
+          <button
+            type="button"
+            class="btn btn-lg"
+            data-toggle="modal"
+            data-target="#hint_modal"
+            style="color: #CFDBEE"
+          >
+            <h1 id="hint-title" class="hvr">Hint</h1>
+          </button>
+        </div>
         <div class="col-sm-6 text-light">
           <h1 id="hero-title" class="text-center mb-4">Guess a Hero</h1>
         </div>
         <div class="col-sm-3 text-right"></div>
       </div>
+      <br />
       <!-- statistics column -->
       <div class="row">
         <!-- Guess left section -->
         <div class="col-sm-3 text-warning">
-          <h1>Guesses left: <span id="guesses-left"></span></h1>
+          <h1>Guesses left: <span id="guesses_left"></span></h1>
         </div>
         <!-- word space -->
         <div class="col-sm-6 text-light">
-          <h1 class="display-2" style="text-align:center">
-            <span id="hero-guess"></span>
+          <h1 class="display-4" style="text-align:center">
+            <span
+              id="hero_guess"
+              class="colored"
+              style="transition: color 5s"
+            ></span>
           </h1>
         </div>
         <!-- winning numbers -->
         <div class="col-sm-3 text-success text-center">
-          <h1>Win: <span id="win"></span></h1>
+          <h1>Win: <span id="total_win"></span></h1>
         </div>
       </div>
       <br />
       <div class="row">
         <!-- guess history -->
         <div class="col-sm-3 text-primary">
-          <h1>Guesses so far: <span id="guess-history"></span></h1>
+          <h1>Guesses so far: <span id="guess_history"></span></h1>
         </div>
         <!-- user guess key -->
         <div class="col-sm-6 text-danger">
-          <h1 style="text-align:center">
-            Your guess: <span id="key_pressed"></span>
-          </h1>
+          <h1>Your guess: <span id="key_pressed"></span></h1>
         </div>
         <!-- loss numbers -->
         <div class="col-sm-3 text-danger text-center">
-          <h1>Loss: <span id="loss"></span></h1>
+          <h1>Loss: <span id="total_loss"></span></h1>
         </div>
       </div>
       <br />
       <!-- image display and audio section -->
-      <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8 text-center">
-          <img id="show-hero" src="" alt="" width="200px" />
-          <audio id="play-music" src="" class="vision-hide">
+      <div class="row mx-0">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 text-center">
+          <img id="show_hero" src="" alt="" width="50%" />
+          <audio id="play_music" src="" class="vision-hide">
             Not supported browser
           </audio>
         </div>
-        <div class="col-sm-2"></div>
+        <div class="col-sm-3"></div>
       </div>
-    
 
-      <!-- Modal -->
+      <!-- Rule Modal -->
       <div
         class="modal fade"
         id="modelId"
@@ -115,7 +126,8 @@
             <div class="modal-body">
               <ul class="list-group rules">
                 <li class="list-group-item rule">
-                  Remember! There is no space in the name ex: NICKFURY
+                  Remember! There is no space in the name ex:
+                  <strong class="text-danger">NICKFURY</strong>
                 </li>
                 <li class="list-group-item rule">
                   Press any letter on a keyboard to guess a word
@@ -144,6 +156,29 @@
                 <span class="modal-close display-4">Close</span>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hint Modal -->
+    <div
+      class="modal fade"
+      id="hint_modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h1 id="hint"></h1>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">
+              <span class="modal-close display-4">Close</span>
+            </button>
           </div>
         </div>
       </div>
