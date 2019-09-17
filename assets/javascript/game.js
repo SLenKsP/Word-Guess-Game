@@ -39,7 +39,7 @@ var avengers = {
 };
 
 // variable
-var wins = 0;
+var win = 0;
 var loss = 0;
 var guesses = 15;
 var randomNumber = Math.floor(Math.random() * avengers.heroNames.length);
@@ -86,6 +86,8 @@ document.onkeyup = function(event) {
       hero = hero.setCharAt(k, tempHero[k]);
       heroSelected.innerHTML = hero;
       if (!hero.includes("_")) {
+        win++;
+        totalWin.innerHTML = win;
         showImage.setAttribute("src", imageOnWin);
         playAudio.setAttribute("src", audioSourceOnWin);
         playAudio.play();
@@ -95,10 +97,17 @@ document.onkeyup = function(event) {
         guessHistory.innerHTML += user + ", ";
       }
     }
-    if (guesses === 0) {
-      showImage.setAttribute("src", imageOnLoss);
-      playAudio.setAttribute("src", audioSourceOnLoss);
-      playAudio.play();
-    }
+  }
+  if (guesses === 0) {
+    loss++;
+    totalLoss.innerHTML = loss;
+    showImage.setAttribute("src", imageOnLoss);
+    playAudio.setAttribute("src", audioSourceOnLoss);
+    playAudio.play();
   }
 };
+
+//  reset upon winning or losing function
+function restart() {
+  randomNumber = Math.floor(Math.random() * avengers.heroNames.length);
+}
