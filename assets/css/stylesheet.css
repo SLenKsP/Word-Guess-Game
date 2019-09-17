@@ -8,7 +8,35 @@
   font-style: normal;
 }
 
-h1 {
+* {
   font-family: "avengeance_heroic_avengerBdIt";
-  color: white;
+  /* color: aliceblue; */
+}
+
+.modal-body {
+  letter-spacing: 3px;
+}
+.title:hover {
+ color:brown;
+}
+#hero-guess{
+  text-align: center;
+}
+button,
+.modal-close {
+  border-radius: none;
+  color: aliceblue;
+  background: none;
+  border: none;
+}
+button:hover, .modal-close:hover {
+  color: brown;
+}
+.modal-content,
+.modal-body,
+.rules,
+.rule {
+  background-color: rgba(0, 0, 0, 0);
+  color: aliceblue;
+  font-size: 24px;
 }

@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+
     <!-- Bootstrap link -->
     <link
       rel="stylesheet"
@@ -16,8 +22,131 @@
     <link rel="stylesheet" href="./assets/css/stylesheet.css" />
   </head>
   <body style="background-image: url('./assets/images/bg.png')">
-    <div class="container">
-      <h1 id="idgame_title" class="display-1 text-center">Hangman</h1>
+    <div class="container-fluid mt-3">
+      <!-- Header -->
+      <div class="row my-4">
+        <div class="col-sm-4 ">
+          <button id="avenger_title" class=" text-center" onclick="reset()">
+            <span class="colored" style="transition: color 5s; font-size:5em"
+              >Hangman</span
+            >
+          </button>
+        </div>
+        <!-- rules button -->
+        <div class="col-sm-8 text-right">
+          <button
+            type="button"
+            class="btn-lg mb-2"
+            data-toggle="modal"
+            data-target="#modelId"
+          >
+            <span id="rules-title " class="display-4 hvr">Rules</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- guess a hero and rules titles -->
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 text-light">
+          <h1 id="hero-title" class="text-center mb-4">Guess a Hero</h1>
+        </div>
+        <div class="col-sm-3 text-right"></div>
+      </div>
+      <!-- statistics column -->
+      <div class="row">
+        <!-- Guess left section -->
+        <div class="col-sm-3 text-warning">
+          <h1>Guesses left: <span id="guesses-left"></span></h1>
+        </div>
+        <!-- word space -->
+        <div class="col-sm-6 text-light">
+          <h1 class="display-2" style="text-align:center">
+            <span id="hero-guess"></span>
+          </h1>
+        </div>
+        <!-- winning numbers -->
+        <div class="col-sm-3 text-success text-center">
+          <h1>Win: <span id="win"></span></h1>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <!-- guess history -->
+        <div class="col-sm-3 text-primary">
+          <h1>Guesses so far: <span id="guess-history"></span></h1>
+        </div>
+        <!-- user guess key -->
+        <div class="col-sm-6 text-danger">
+          <h1 style="text-align:center">
+            Your guess: <span id="key_pressed"></span>
+          </h1>
+        </div>
+        <!-- loss numbers -->
+        <div class="col-sm-3 text-danger text-center">
+          <h1>Loss: <span id="loss"></span></h1>
+        </div>
+      </div>
+      <br />
+      <!-- image display and audio section -->
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 text-center">
+          <img id="show-hero" src="" alt="" width="200px" />
+          <audio id="play-music" src="" class="vision-hide">
+            Not supported browser
+          </audio>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+    
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="modelId"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modelTitleId"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <ul class="list-group rules">
+                <li class="list-group-item rule">
+                  Remember! There is no space in the name ex: NICKFURY
+                </li>
+                <li class="list-group-item rule">
+                  Press any letter on a keyboard to guess a word
+                </li>
+                <li class="list-group-item rule">
+                  Each correct guess will fill the blanks on the screen
+                </li>
+                <li class="list-group-item rule">
+                  Each wrong guess will deduct your available chances
+                </li>
+                <li class="list-group-item rule">
+                  You will get from <strong class="text-danger">6</strong> to
+                  <strong class="text-danger">10</strong>chances(depends on how
+                  hard and long the word is)
+                </li>
+                <li class="list-group-item rule">
+                  If no chances left, you lose!
+                </li>
+                <li class="list-group-item rule">
+                  If you guess correct word, you win!
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn " data-dismiss="modal">
+                <span class="modal-close display-4">Close</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Bootstrap supported JS -->
@@ -36,5 +165,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="./assets/javascript/game.js"></script>
   </body>
 </html>
