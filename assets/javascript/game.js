@@ -216,7 +216,6 @@ document.onkeypress = function(event) {
     if (user === temp[k]) {
       hero = hero.setCharAt(k, temp[k]);
       heroSelected();
-      guessHistory();
       if (!hero.includes("_")) {
         win++;
         totalWin();
