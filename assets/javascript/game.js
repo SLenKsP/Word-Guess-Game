@@ -150,7 +150,7 @@ remainingGuesses();
 showHint();
 heroSetupOnScreen();
 
-//select random Helo each time;
+//select random Hero each time without repeating;
 function randomHeroSelect() {
   if (tempHero.length === 0) {
     tempHero = avengers.heroInfo.slice();
