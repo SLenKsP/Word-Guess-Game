@@ -18,7 +18,7 @@ var avengers = {
   heroInfo: [
     {
       name: "DOCTORSTRANGE",
-      heroImage: "assets/ images / dr_strange.png",
+      heroImage: "assets/images/dr_strange.png",
       hint: "He Lives in Greenwich Village, New York City"
     },
     {
@@ -40,7 +40,7 @@ var avengers = {
     {
       name: "BLACKPANTHER",
       heroImage: "assets/images/black_panther.png",
-      hint: "His Superpowers Come from a Heart-shaped Herb"
+      hint: "His superpowers Come from a Heart-shaped Herb"
     },
     {
       name: "CAPTAINMARVEL",
