@@ -231,7 +231,9 @@ document.onkeydown = function(event) {
         playAudioOnWin();
         winningLine();
         showModal();
-        reset();
+        setTimeout(function() {
+      reset();
+    }, 500);
       }
     }
   }
@@ -241,6 +243,8 @@ document.onkeydown = function(event) {
     playAudioOnLoss();
     losingLine();
     showModal();
-    reset();
+    setTimeout(function() {
+      reset();
+    }, 500);
   }
 };
