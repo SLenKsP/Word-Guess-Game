@@ -69,6 +69,7 @@ var imageOnLoss = avengers.hulkImageOnLoss;
 var audioSourceOnLoss = avengers.LossingThemes;
 var audioSourceOnWin = avengers.winningTheme;
 var temp = hero;
+var keyStored = "";
 
 // elements
 
@@ -175,6 +176,7 @@ function reset() {
   console.log(hero);
   console.log(hint);
   guesses = 15;
+  keyStored = "";
   temp = hero;
   heroSetupOnScreen();
   showHint();
@@ -206,12 +208,19 @@ function resetOnLoss() {
 
 // main logic that includes user key press and compare with hero selected
 
-document.onkeypress = function(event) {
+document.onkeydown = function(event) {
   userChar.textContent = event.key;
   user = userChar.textContent.toUpperCase();
-  --guesses;
-  remainingGuesses();
-  guessHistory();
+  keyStored += user;
+  console.log(keyStored);
+
+  // condition which make sure not to deduct remaining guesses if character was chosen earlier
+  if (keyStored.split(user).length - 1 === 1) {
+    --guesses;
+    remainingGuesses();
+    guessHistory();
+  }
+
   for (var k = 0; k < hero.length; k++) {
     if (user === temp[k]) {
       hero = hero.setCharAt(k, temp[k]);
